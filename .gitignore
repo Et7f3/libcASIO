@@ -30,6 +30,8 @@
 
 # Executables
 *.exe
+*.G1A
+*.bat
 *.out
 *.app
 *.i*86
@@ -41,6 +43,12 @@
 *.su
 *.idb
 *.pdb
+*.fsy
+*.lst
+*.dbg
+*.bin
+*.abs
+*.mak
 
 # Kernel Module Compile Results
 *.mod*
