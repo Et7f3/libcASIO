@@ -12,4 +12,5 @@ Debug=Debug\FXADDINror.dbg
 LoadAddress=80000000:90100000
 
 [Files]
-SourceFile=:libcASIO.c
+SourceFile=:src\__libcasio.c
+SourceFile=:main.c

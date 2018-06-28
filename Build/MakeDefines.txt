@@ -1,0 +1,50 @@
+################################################
+# Make file for CASIO fx-9860G SDK Addin
+#
+############################
+# Directory defines
+TCDIR = $TC
+OSDIR = $OS
+APPDIR = $AP
+OUTDIR = $OU
+
+################
+# Main Defines
+SH_EXEDIR=$(TCDIR)\bin
+
+# Hitachi SH C/C++ Compiler02 phase
+SHCC02_EXE=shc.exe
+SHCC02_DEP="$(OSDIR)\FX\include\fxlib.h" "$(APPDIR)\src\__libcasio.h" $HF
+
+# Hitachi SH Assembler03 phase
+SHASM03_EXE=asmsh.exe
+
+# Hitachi OptLinker04 phase
+SHLINK04_EXE=Optlnk.exe
+SHLINK04_DEP="$(OSDIR)\FX\lib\fx9860G_library.lib"
+SHLINK04_DEP2="$(OSDIR)\FX\lib\setup.obj"
+
+#######################
+# Files to build
+$FI
+
+#######################
+# nmake "all" statement
+
+ALL:  SH_ENV \
+	$(USERALLOBJ) \
+	$(OUTDIR)\$(RFILE).bin \
+
+####################
+# Description blocks
+
+!MESSAGE %3#C$z`&'0?
+!MESSAGE
+!MESSAGE Executing Hitachi SH C/C++ Compiler/Assembler phase
+!MESSAGE
+
+SH_ENV :
+	set SHC_INC=$(TCDIR)\include
+	set PATH=$(TCDIR)\bin
+	set SHC_LIB=$(TCDIR)\bin
+	set SHC_TMP=$(OUTDIR)
