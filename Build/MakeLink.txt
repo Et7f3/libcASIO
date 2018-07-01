@@ -1,0 +1,27 @@
+!MESSAGE
+!MESSAGE Executing Hitachi OptLinker04 phase
+!MESSAGE
+
+"$(OUTDIR)\$(RFILE).bin" : $(USERALLOBJ) $(SHLINK04_DEP2) $(SHLINK04_DEP)
+	"$(SH_EXEDIR)\$(SHLINK04_EXE)" -subcommand=<<
+noprelink
+sdebug
+rom D=R
+nomessage
+list "$(OUTDIR)\$(RFILE).map"
+show symbol
+nooptimize
+start P_TOP,P,C,D,C$VTBL,C$INIT/0300200,B_BR_Size,B,R/08100000
+fsymbol P
+nologo
+input $(USERALLOBJ)
+input $(SHLINK04_DEP2)
+library $(SHLINK04_DEP)
+output "$(OUTDIR)\$(RFILE).abs"
+-nomessage=1100
+end
+input "$(OUTDIR)\$(RFILE).abs"
+form binary
+output "$(OUTDIR)\$(RFILE).bin"
+exit
+<<

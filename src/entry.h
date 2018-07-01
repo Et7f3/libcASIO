@@ -7,7 +7,7 @@
 /*   Copyright (c) 2006 CASIO COMPUTER CO., LTD.                 */
 /*                                                               */
 /*****************************************************************/
-#include "fxlib.h"
+//#include "fxlib.h"
 
 
 //****************************************************************************
@@ -22,4 +22,4 @@
 //  retval  :   1 = No error / 0 = Error
 //
 //****************************************************************************
-int AddIn_main(int isAppli, unsigned short OptionNum);
+extern int AddIn_main(int isAppli, unsigned short OptionNum);

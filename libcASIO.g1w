@@ -1,6 +1,6 @@
 [DLSimProject]
 Name=libcASIO
-Version=0.0
+Version=0.1
 Model=:fx-9860G.dlm
 SourcePath=SRC
 MemoryPath=INIT
@@ -12,5 +12,4 @@ Debug=Debug\FXADDINror.dbg
 LoadAddress=80000000:90100000
 
 [Files]
-SourceFile=:src\__libcasio.c
 SourceFile=:main.c

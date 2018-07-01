@@ -14,7 +14,9 @@ SH_EXEDIR=$(TCDIR)\bin
 
 # Hitachi SH C/C++ Compiler02 phase
 SHCC02_EXE=shc.exe
-SHCC02_DEP="$(OSDIR)\FX\include\fxlib.h" "$(APPDIR)\src\__libcasio.h" $HF
+# "$(OSDIR)\FX\include\fxlib.h" 
+SHCC02_DEP="$(APPDIR)\src\entry.h"\
+ "$(APPDIR)\src\__libcASIO.h" $HF
 
 # Hitachi SH Assembler03 phase
 SHASM03_EXE=asmsh.exe
@@ -25,13 +27,19 @@ SHLINK04_DEP="$(OSDIR)\FX\lib\fx9860G_library.lib"
 SHLINK04_DEP2="$(OSDIR)\FX\lib\setup.obj"
 
 #######################
-# Files to build
-$FI
+# Files to build /*this is Default file 1*/
+FILE_DEF0=entry
+FILESRC_DEF0="$(APPDIR)\src\$(FILE_DEF0).c"
+FILEOBJ_DEF0="$(OUTDIR)\$(FILE_DEF0).obj"
+FILE_DEF1=__libcASIO
+FILESRC_DEF1="$(APPDIR)\src\$(FILE_DEF1).c"
+FILEOBJ_DEF1="$(OUTDIR)\$(FILE_DEF1).obj"
+$FI $(FILEOBJ_DEF0) $(FILEOBJ_DEF1)
 
 #######################
 # nmake "all" statement
 
-ALL:  SH_ENV \
+ALL: | SH_ENV \
 	$(USERALLOBJ) \
 	$(OUTDIR)\$(RFILE).bin \
 
@@ -48,3 +56,37 @@ SH_ENV :
 	set PATH=$(TCDIR)\bin
 	set SHC_LIB=$(TCDIR)\bin
 	set SHC_TMP=$(OUTDIR)
+$(FILEOBJ_DEF0) : $(FILESRC_DEF0) $(SHCC02_DEP)
+	"$(SH_EXEDIR)\$(SHCC02_EXE)" -subcommand=<<
+-cpu=sh3
+-include="$(OSDIR)\FX\include","$(APPDIR)"
+-objectfile=$(FILEOBJ_DEF0)
+-show=source
+-listfile="$(OUTDIR)\$(FILE_DEF0).lst"
+-size
+-noinline
+-chgincpath
+-errorpath
+$(FILESRC_DEF0)
+-lang=c
+-nologo
+-debug
+-define=USE_LCA
+<<
+$(FILEOBJ_DEF1) : $(FILESRC_DEF1) $(SHCC02_DEP)
+	"$(SH_EXEDIR)\$(SHCC02_EXE)" -subcommand=<<
+-cpu=sh3
+-include="$(OSDIR)\FX\include","$(APPDIR)"
+-objectfile=$(FILEOBJ_DEF1)
+-show=source
+-listfile="$(OUTDIR)\$(FILE_DEF1).lst"
+-size
+-noinline
+-chgincpath
+-errorpath
+$(FILESRC_DEF1)
+-lang=c
+-nologo
+-debug
+-define=USE_LCA
+<<

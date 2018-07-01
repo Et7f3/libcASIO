@@ -1,0 +1,17 @@
+$($ON) : $($SN)
+	"$(SH_EXEDIR)\$(SHASM03_EXE)" -subcommand=<<
+$($SN)
+-cpu=sh3
+-endian=big
+-round=zero
+-denormalize=off
+-include="$(APPDIR)"
+-include="$(OSDIR)\FX\include"
+-debug
+-object=$($ON)
+-literal=pool,branch,jump,return
+-nologo
+-chgincpath
+-errorpath
+-define=USE_LCA
+<<

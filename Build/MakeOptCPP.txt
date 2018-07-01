@@ -1,0 +1,17 @@
+$($ON) : $($SN) $(SHCC02_DEP)
+	"$(SH_EXEDIR)\$(SHCC02_EXE)" -subcommand=<<
+-cpu=sh3
+-include="$(OSDIR)\FX\include","$(APPDIR)"
+-objectfile=$($ON)
+-show=source
+-listfile="$(OUTDIR)\$($DN).lst"
+-size
+-noinline
+-chgincpath
+-errorpath
+$($SN)
+-lang=cpp
+-nologo
+-debug
+-define=USE_LCA
+<<

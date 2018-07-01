@@ -49,6 +49,7 @@
 *.bin
 *.abs
 *.mak
+*.mem
 
 # Kernel Module Compile Results
 *.mod*

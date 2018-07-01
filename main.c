@@ -4,11 +4,10 @@ int main(void)
 
   Bdisp_AllClr_DDVRAM();
 
-  locate(1,4);
-  Print((unsigned char*)"This application is");
-  locate(1,5);
-  Print((unsigned char*)" sample Add-In.");
-
+  //lca_test();
+  lca_test();
+  my_test();
+/*sleep();*/
   while(1){
       GetKey(&key);
   }
