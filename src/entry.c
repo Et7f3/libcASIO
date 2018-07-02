@@ -33,6 +33,10 @@ int AddIn_main(int isAppli, unsigned short OptionNum)
   int retuned_value = 0;
   /*INIT*/
   retuned_value = main();
+  while(1)
+  {
+      GetKey(&key);
+  }
   /*CLEAN*/
   return retuned_value;
 }

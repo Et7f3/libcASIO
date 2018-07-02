@@ -8,9 +8,6 @@ int main(void)
   lca_test();
   my_test();
 /*sleep();*/
-  while(1){
-      GetKey(&key);
-  }
 
     return 0;
 }

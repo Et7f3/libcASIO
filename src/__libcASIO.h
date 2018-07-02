@@ -11,6 +11,5 @@
 #define __ADD_PREFIX(fun) __EVALUATOR(LCA, fun)
 
 extern void __ADD_PREFIX(test)();
-extern void my_test(void);
 
 #endif //__LIBCASIOH_
